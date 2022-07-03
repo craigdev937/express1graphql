@@ -1,4 +1,5 @@
-import { projects, clients } from "../sampleData.js";
+import { Client } from "../models/Client.js";
+import { Project } from "../models/Project.js";
 import { 
     GraphQLObjectType, GraphQLID, GraphQLString, 
     GraphQLSchema, GraphQLList, 
@@ -15,8 +16,7 @@ const ProjectType = new GraphQLObjectType({
         client: {
             type: ClientType,
             resolve(obj, args) {
-                return clients.find(
-                    (client) => client.id === obj.clientId);
+                return Client.findById(obj.clientId);
             }
         },
     })
@@ -39,29 +39,27 @@ const RootQuery = new GraphQLObjectType({
         projects: {
             type: new GraphQLList(ProjectType),
             resolve(obj, args) {
-                return projects;
+                return Project.find();
             }
         },
         project: {
             type: ProjectType,
             args: { id: { type: GraphQLID }},
             resolve(obj, args) {
-                return projects.find(
-                    (project) => project.id === args.id);
+                return Project.findById(args.id);
             }
         },
         clients: {
             type: new GraphQLList(ClientType),
             resolve(obj, args) {
-                return clients;
+                return Client.find();
             }
         },
         client: {
             type: ClientType,
             args: { id: { type: GraphQLID }},
             resolve(obj, args) {
-                return clients.find(
-                    (client) => client.id === args.id);
+                return Client.findById(args.id);
             }
         }
     }
