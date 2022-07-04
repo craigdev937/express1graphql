@@ -1,21 +1,12 @@
 import React from "react";
-import { gql, useQuery } from "@apollo/client";
+import { useQuery } from "@apollo/client";
 import { ClientRow } from "./ClientRow";
-
-const GET_CLIENTS = gql`
-    query getClients {
-        clients {
-            id
-            name
-            email
-            phone
-        }
-    }
-`;
+import { Spinner } from "./Spinner";
+import { GET_CLIENTS } from "../graphql/clientQry";
 
 export const Clients = () => {
     const { loading, error, data } = useQuery(GET_CLIENTS);
-    if (loading) return <h1>Loading...</h1>
+    if (loading) return <Spinner />
     if (error) return <h1>Something went wrong!</h1>
 
     return (
