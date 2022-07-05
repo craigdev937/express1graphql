@@ -10,4 +10,21 @@ export const GET_PROJECTS = gql`
     }
 `;
 
+export const FETCH_PROJECT = gql`
+    query fetchProject($id: ID!) {
+        project(id: $id) {
+            id
+            name
+            description
+            status
+            client {
+                id
+                name
+                email
+                phone
+            }
+        }
+    }
+`;
+
 

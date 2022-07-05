@@ -1,11 +1,22 @@
 import React from "react";
+import { Link } from "react-router-dom";
+import { FaExclamationTriangle } from "react-icons/fa";
 
 export const NotFound = () => {
     return (
-        <React.Fragment>
-            <h1>NotFound</h1>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Repellendus officia similique exercitationem? Dolorem molestiae minus voluptatem sed dolor ex cupiditate! Dolorum officia non repellat voluptates? Quo est doloribus inventore deleniti.</p>
-        </React.Fragment>
+        <main className="d-flex 
+            flex-column 
+            justify-content-center 
+            align-items-center mt-5"
+            >
+                <FaExclamationTriangle 
+                    className="text-danger" 
+                    size="5em" 
+                />
+                <h1>404</h1>
+                <p className="lead">Sorry, this page does not exist.</p>
+                <Link to="/" className="btn btn-primary">Go Back</Link>
+        </main>
     );
 };
 

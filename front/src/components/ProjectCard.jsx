@@ -13,7 +13,7 @@ export const ProjectCard = ({ project }) => {
                         </h5>
                         <a 
                             className="btn btn-light" 
-                            href={`/projects/${project.jd}`}
+                            href={`/projects/${project.id}`}
                             >View
                         </a>
                     </div>
