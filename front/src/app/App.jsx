@@ -4,9 +4,28 @@ import { Main } from "../routes/Main";
 import { ApolloClient, ApolloProvider, 
     InMemoryCache } from "@apollo/client";
 
+    const cache = new InMemoryCache({
+        typePolicies: {
+            Query: {
+                fields: {
+                    clients: {
+                        merge(existing, incoming) {
+                            return incoming;
+                        }
+                    },
+                    projects: {
+                        merge(existing, incoming) {
+                            return incoming;
+                        }
+                    },
+                }
+            }
+        }
+    });
+
 const GQLClient = new ApolloClient({
     uri: "http://localhost:9000/graphql",
-    cache: new InMemoryCache()
+    cache: cache
 }); 
 
 export const App = () => {
