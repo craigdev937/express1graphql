@@ -4,6 +4,7 @@ import { useQuery } from "@apollo/client";
 import { Spinner } from "../components/Spinner";
 import { FETCH_PROJECT } from "../graphql/projectQry";
 import { ClientInfo } from "../components/ClientInfo";
+import { DeleteProjectBtn } from "../containers/DeleteProjectBtn";
 
 export const Project = () => {
     const { id } = useParams();
@@ -28,6 +29,7 @@ export const Project = () => {
                     <h5 className="mt-3">Project Status</h5>
                     <p className="lead">{data.project.status}</p>
                     <ClientInfo client={data.project.client} />
+                    <DeleteProjectBtn projectId={data.project.id} />
                 </main>
             )}
         </React.Fragment>
