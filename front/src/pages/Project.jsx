@@ -5,6 +5,7 @@ import { Spinner } from "../components/Spinner";
 import { FETCH_PROJECT } from "../graphql/projectQry";
 import { ClientInfo } from "../components/ClientInfo";
 import { DeleteProjectBtn } from "../containers/DeleteProjectBtn";
+import { EditProjectForm } from "../containers/EditProjectForm";
 
 export const Project = () => {
     const { id } = useParams();
@@ -30,6 +31,7 @@ export const Project = () => {
                     <p className="lead">{data.project.status}</p>
                     <ClientInfo client={data.project.client} />
                     <DeleteProjectBtn projectId={data.project.id} />
+                    <EditProjectForm project={data.project}  />
                 </main>
             )}
         </React.Fragment>
